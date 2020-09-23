@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 5em;
+}
+
+.todoCard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 400px;
+  -webkit-box-shadow: 0 0 5px #00000050;
+          box-shadow: 0 0 5px #00000050;
+  border-radius: 0.5em;
+}
+
+.todoCard .todoHeader {
+  background-image: url("../images/head-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 200px;
+  width: 100%;
+  border-radius: 0.5em 0.5em 0 0;
+  position: relative;
+}
+
+.todoCard .todoHeader::after {
+  content: "";
+  z-index: 5;
+  position: absolute;
+  border-radius: 0.5em 0.5em 0 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #00000050;
+}
+
+.todoCard .todoHeader .date {
+  color: white;
+  position: absolute;
+  bottom: 0;
+  margin-left: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  z-index: 10;
+}
+
+.todoCard .todoHeader button {
+  margin: 1em;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  z-index: 20;
+  padding: 0.4em;
+  border-radius: 0.3em;
+  outline: none;
+}
+
+.todoCard .todoHeader #btnDeleteCompleted {
+  left: 0;
+}
+
+.todoCard .todoHeader #btnDeleteAll {
+  right: 0;
+}
+
+.todoCard .todoAddArea {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  padding: 0 0.5em;
+  margin-bottom: 1em;
+}
+
+.todoCard .todoAddArea input {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  height: 2.5em;
+  border: 0;
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
+.todoCard .todoAddArea button {
+  height: 2.5em;
+  padding: 0.25em;
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.todoCard .todoListArea {
+  width: 100%;
+  padding: 1em;
+  font-size: 18px;
+}
+
+.todoCard .todoListArea ul .todoItem {
+  list-style: none;
+  margin: 0.5em 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-transition: color 0.5s ease-in-out;
+  transition: color 0.5s ease-in-out;
+  position: relative;
+}
+
+.todoCard .todoListArea ul .todoItem .checkBox {
+  position: absolute;
+  left: -9999px;
+}
+
+.todoCard .todoListArea ul .todoItem .checkBox:not(:checked) ~ .customCheckbox::after {
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}
+
+.todoCard .todoListArea ul .todoItem .checkBox:checked ~ .customCheckbox::after {
+  opacity: 1;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.todoCard .todoListArea ul .todoItem .checkBox:checked ~ label {
+  color: #00000050;
+}
+
+.todoCard .todoListArea ul .todoItem .checkBox:not(:checked) ~ label::after {
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+}
+
+.todoCard .todoListArea ul .todoItem .checkBox:checked ~ label::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+}
+
+.todoCard .todoListArea ul .todoItem label {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  padding-left: 1.95em;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+  outline: none;
+}
+
+.todoCard .todoListArea ul .todoItem label:hover + .todoCard .todoListArea ul .todoItem label::after .customCheckbox {
+  border: 2px solid #4778d9 !important;
+}
+
+.todoCard .todoListArea ul .todoItem label::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  margin-left: 1.95em;
+  height: 2px !important;
+  background-color: #00000050;
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-transition: all 1s linear;
+  transition: all 1s linear;
+}
+
+.todoCard .todoListArea ul .todoItem .customCheckbox {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1.25em;
+  height: 1.25em;
+  border: 2px solid #ccc;
+  background: #fff;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+          box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.todoCard .todoListArea ul .todoItem .customCheckbox:hover {
+  border: 2px solid #4778d9 !important;
+}
+
+.todoCard .todoListArea ul .todoItem .customCheckbox::after {
+  content: "\2713\0020";
+  position: absolute;
+  top: 0.08em;
+  left: 0.1em;
+  font-size: 1.2em;
+  line-height: 0.8;
+  color: #09ad7e;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+.todoCard .todoListArea ul .todoItem .blank {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.todoCard .todoListArea ul .todoItem #deletebtn {
+  cursor: pointer;
+}
+/*# sourceMappingURL=style.css.map */
